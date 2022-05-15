@@ -8,14 +8,18 @@
 
 
 const $botonCalcularTiempoTotal = document.querySelector('#duracion-total-clases');
-const acumuladorTiempo = [0,0,0];
+let acumuladorTiempo = [0,0,0];
 
 $botonCalcularTiempoTotal.onclick = function () {
     guardarTiempo(acumuladorTiempo);
     convertirSegundosAMinutos(acumuladorTiempo);
     convertirMinutosAHoras(acumuladorTiempo);
     resultado(acumuladorTiempo);
+    
+    acumuladorTiempo = [0,0,0];
+
 }
+
 
 function guardarTiempo(acumuladorTiempo){
     const nodeListSegundos = document.querySelectorAll('.segundos');
