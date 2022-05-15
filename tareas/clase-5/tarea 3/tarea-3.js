@@ -21,9 +21,9 @@ function guardarTiempo(acumuladorTiempo){
     const nodeListSegundos = document.querySelectorAll('.segundos');
     const nodeListMinutos = document.querySelectorAll('.minutos');
     const nodeListHoras = document.querySelectorAll('.horas');
-    const CLASES = 5;
+    const CANTIDAD_CLASES = 5;
 
-    for(let i = 0; i < CLASES; i++){
+    for(let i = 0; i < CANTIDAD_CLASES; i++){
         acumuladorTiempo[2] += Number(nodeListSegundos[i].value);
         acumuladorTiempo[1] += Number(nodeListMinutos[i].value);
         acumuladorTiempo[0] += Number(nodeListHoras[i].value);
