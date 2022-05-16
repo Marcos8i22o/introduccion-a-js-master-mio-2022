@@ -7,56 +7,34 @@
     <title>Tarea 3</title>
 
     <style>
-      input {
-        width: 130px;
+      #cantidad-de-clases {
+        width: 190px;
       }
     </style>
   </head>
   <body>
-    <h2>Ingrese la duración de cada clase</h2>
-
     <div>
-      <label>Clase 1: </label>
-      <input type="number" class="horas" placeholder="Ingrese hora/s" />
-      <input type="number" class="minutos" placeholder="Ingrese minuto/s" />
-      <input type="number" class="segundos" placeholder="Ingrese segundo/s" />
+      <input
+        type="number"
+        id="cantidad-de-clases"
+        placeholder="Ingrese la cantidad de clases"
+      />
+      <button type="button" id="agregar-clases">Agregar</button>
     </div>
 
-    <div>
-      <label>Clase 2: </label>
-      <input type="number" class="horas" placeholder="Ingrese hora/s" />
-      <input type="number" class="minutos" placeholder="Ingrese minuto/s" />
-      <input type="number" class="segundos" placeholder="Ingrese segundo/s" />
-    </div>
+    <br />
 
-    <div>
-      <label>Clase 3: </label>
-      <input type="number" class="horas" placeholder="Ingrese hora/s" />
-      <input type="number" class="minutos" placeholder="Ingrese minuto/s" />
-      <input type="number" class="segundos" placeholder="Ingrese segundo/s" />
-    </div>
-
-    <div>
-      <label>Clase 4: </label>
-      <input type="number" class="horas" placeholder="Ingrese hora/s" />
-      <input type="number" class="minutos" placeholder="Ingrese minuto/s" />
-      <input type="number" class="segundos" placeholder="Ingrese segundo/s" />
-    </div>
-
-    <div>
-      <label>Clase 5: </label>
-      <input type="number" class="horas" placeholder="Ingrese hora/s" />
-      <input type="number" class="minutos" placeholder="Ingrese minuto/s" />
-      <input type="number" class="segundos" placeholder="Ingrese segundo/s" />
-    </div>
-    
-    <br>
-
-    <button type="button" id="duracion-total-clases">Calcular tiempo total</button>
+    <div id="clases"></div>
 
     <br>
+    <button type="button" id="duracion-total-clases">
+      Calcular tiempo total
+    </button>
+
+    <br />
 
     <strong id="texto-a-mostrar"></strong>
+    <br />
 
     <script src="/tareas/clase-5/tarea 3/tarea-3.js"></script>
   </body>
