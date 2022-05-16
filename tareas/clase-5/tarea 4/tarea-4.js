@@ -16,6 +16,8 @@ crearListaOrdenada($body);
 crearListaRandom($body);
 guardarNumeros(listaNumeros);
 const promedio = calcularPromedio(listaNumeros);
+const numeroMasChico = obtenerMinimo(listaNumeros);
+const numeroMasGrande = obtenerMaximo(listaNumeros);
 
 function crearListaOrdenada($body){
     const $listaOrdenada = document.createElement('ol');
@@ -55,4 +57,28 @@ function calcularPromedio (listaNumeros) {
     }
 
     return sumatoria / listaNumeros.length;
+}
+
+function obtenerMinimo (listaNumeros) {
+    let minimo = listaNumeros[0];
+    
+    for(let i = 1; i < listaNumeros.length; i++){
+        if(listaNumeros[i] < minimo){
+            minimo = listaNumeros[i];
+        }
+    }
+
+    return minimo;
+}
+
+function obtenerMaximo (listaNumeros) {
+    let maximo = listaNumeros[0];
+
+    for(let i = 1; listaNumeros.length; i++){
+        if(listaNumeros[i] > maximo){
+            maximo = listaNumeros[i];
+        }
+    }
+
+    return maximo;
 }
