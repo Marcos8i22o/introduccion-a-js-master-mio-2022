@@ -12,6 +12,7 @@
 const $body = document.querySelector('body');
 crearListaOrdenada($body);
 crearListaRandom($body);
+guardarNumeros();
 
 function crearListaOrdenada($body){
     const $listaOrdenada = document.createElement('ol');
@@ -29,5 +30,14 @@ function crearListaRandom ($body) {
         let $li = document.createElement('li');
         $li.textContent = Math.floor(Math.random() * MAX);
         $listaOrdenada.appendChild($li);
+    }
+}
+
+function guardarNumeros () {
+    const listaNumeros = [];
+    const $listaNumeros = document.querySelectorAll('li');
+
+    for (let i = 0; i < $listaNumeros.length; i++) {
+        listaNumeros.push(Number($listaNumeros[i].textContent));
     }
 }
