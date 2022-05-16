@@ -18,6 +18,8 @@ guardarNumeros(listaNumeros);
 const promedio = calcularPromedio(listaNumeros);
 const numeroMasChico = obtenerMinimo(listaNumeros);
 const numeroMasGrande = obtenerMaximo(listaNumeros);
+const numeroMasFrecuente = obtenerMasFrecuente(listaNumeros);
+console.log(numeroMasFrecuente);
 
 function crearListaOrdenada($body){
     const $listaOrdenada = document.createElement('ol');
@@ -28,7 +30,7 @@ function crearListaOrdenada($body){
 
 function crearListaRandom ($body) {
     const MAX = 1000;
-    const TOPE_ITEMS = 20;
+    const TOPE_ITEMS = 200;
     const $listaOrdenada = document.querySelector('ol');
 
     for (let i =  0; i < TOPE_ITEMS; i++) {
@@ -74,11 +76,39 @@ function obtenerMinimo (listaNumeros) {
 function obtenerMaximo (listaNumeros) {
     let maximo = listaNumeros[0];
 
-    for(let i = 1; listaNumeros.length; i++){
+    for(let i = 1; i < listaNumeros.length; i++){
         if(listaNumeros[i] > maximo){
             maximo = listaNumeros[i];
         }
     }
 
     return maximo;
+}
+
+function obtenerMasFrecuente(listaNumeros) {
+    let maximo = 0;
+    let numeroComparado;
+    let contador;
+    let masRepetido;
+
+    for(let i = 0; i < listaNumeros.length; i++){
+        numeroComparado = listaNumeros[i];
+        contador = 0;
+
+        for(let j = 0; j < listaNumeros.length; j++){
+            if(listaNumeros[j] === numeroComparado){
+                contador++;
+            }
+        }
+        if((contador > 1) && (contador > maximo)){
+            maximo = contador;
+            masRepetido = numeroComparado;
+        }
+    }
+
+    if(maximo < 2){
+        masRepetido = 0;
+    }
+
+    return masRepetido;
 }
