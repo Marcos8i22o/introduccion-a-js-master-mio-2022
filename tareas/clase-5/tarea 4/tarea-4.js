@@ -10,9 +10,12 @@
 //    "El número más frecuente es..."
 
 const $body = document.querySelector('body');
+const listaNumeros = [];
+
 crearListaOrdenada($body);
 crearListaRandom($body);
-guardarNumeros();
+guardarNumeros(listaNumeros);
+const promedio = calcularPromedio(listaNumeros);
 
 function crearListaOrdenada($body){
     const $listaOrdenada = document.createElement('ol');
@@ -33,11 +36,23 @@ function crearListaRandom ($body) {
     }
 }
 
-function guardarNumeros () {
-    const listaNumeros = [];
+function guardarNumeros (listaNumeros) {
+    
     const $listaNumeros = document.querySelectorAll('li');
 
     for (let i = 0; i < $listaNumeros.length; i++) {
         listaNumeros.push(Number($listaNumeros[i].textContent));
     }
+
+    return listaNumeros;
+}
+
+function calcularPromedio (listaNumeros) {
+    let sumatoria = 0; 
+    
+    for(let i = 0; i < listaNumeros.length; i++){
+        sumatoria += listaNumeros[i];
+    }
+
+    return sumatoria / listaNumeros.length;
 }
