@@ -19,7 +19,7 @@ const promedio = calcularPromedio(listaNumeros);
 const numeroMasChico = obtenerMinimo(listaNumeros);
 const numeroMasGrande = obtenerMaximo(listaNumeros);
 const numeroMasFrecuente = obtenerMasFrecuente(listaNumeros);
-console.log(numeroMasFrecuente);
+mostrarResultados(promedio,numeroMasChico,numeroMasGrande,numeroMasFrecuente);
 
 function crearListaOrdenada($body){
     const $listaOrdenada = document.createElement('ol');
@@ -111,4 +111,16 @@ function obtenerMasFrecuente(listaNumeros) {
     }
 
     return masRepetido;
+}
+
+function mostrarResultados(promedio,minimo,maximo,repetido) {
+    const $promedio = document.querySelector('#promedio');
+    const $minimo = document.querySelector('#numero-minimo');
+    const $maximo = document.querySelector('#numero-maximo');
+    const $masFrecuente = document.querySelector('#numero-mas-frecuente');
+
+    $promedio.textContent = `El promedio es: ${promedio}`;
+    $minimo.textContent = `El número más pequeño es: ${minimo}`;
+    $maximo.textContent = `El número más grande es: ${maximo}`;
+    $masFrecuente.textContent = `El número más frecuente es: ${repetido}`; 
 }
