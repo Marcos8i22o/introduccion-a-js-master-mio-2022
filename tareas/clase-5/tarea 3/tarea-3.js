@@ -18,9 +18,13 @@ $botonAgregar.onclick = function () {
 
     $botonCalcularTiempoTotal.onclick = function () {
 
+        const indiceHora = 0;
+        const indiceMinutos = 1;
+        const indiceSegundos = 2;
+
         guardarTiempo(acumuladorTiempo,numeroDeClases);
-        convertirSegundosAMinutos(acumuladorTiempo);
-        convertirMinutosAHoras(acumuladorTiempo);
+        convertirTiempo(acumuladorTiempo,indiceMinutos,indiceSegundos);
+        convertirTiempo(acumuladorTiempo,indiceHora,indiceMinutos);
         resultado(acumuladorTiempo);
         resetear();
         
@@ -85,23 +89,13 @@ function guardarTiempo(acumuladorTiempo,numeroDeClases){
     return acumuladorTiempo;
 }
 
-function convertirSegundosAMinutos(acumuladorTiempo) {
-    while (acumuladorTiempo[2] >= 60) {
-        acumuladorTiempo[2] -= 60;
-        acumuladorTiempo[1] += 1;
-    }
+function convertirTiempo(acumuladorTiempo,indiceUno,indiceDos) {
+    acumuladorTiempo[indiceUno] += Math.floor(acumuladorTiempo[indiceDos] / 60)
+    acumuladorTiempo[indiceDos] = acumuladorTiempo[indiceDos] % 60;
      
     return acumuladorTiempo;
 }
 
-function convertirMinutosAHoras(acumuladorTiempo){
-    while (acumuladorTiempo[1] >= 60) {
-        acumuladorTiempo[1] -= 60;
-        acumuladorTiempo[0] += 1;
-    }
-
-    return acumuladorTiempo;
-}
 
 function resultado(acumuladorTiempo) {
     const $resultado = document.querySelector('#texto-a-mostrar');
