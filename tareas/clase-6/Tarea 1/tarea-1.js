@@ -8,15 +8,16 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 
 const $formulario = document.querySelector('form');
 const $botonCalcular = document.querySelector('#calcular');
-crearInputsCantidadIntegrantes($formulario);
 const $totalIntegrantes = document.querySelector('#total-integrantes');
 
-crearInputsCantidadIntegrantes($formulario,$totalIntegrantes);
+crearInputCantidadIntegrantes($formulario,$totalIntegrantes);
 crearBotonAceptar($formulario);
 const $botonAceptar = document.querySelector('#boton-aceptar');
+const $botonResetear = document.querySelector('#boton-resetear');
+const $resultados = document.querySelector('#resultados');
 
 
-function crearInputsCantidadIntegrantes($formulario,$totalIntegrantes){
+function crearInputCantidadIntegrantes($formulario,$totalIntegrantes){
 
     const $label = document.createElement('label');
     $label.textContent = "Ingrese la cantidad de integrantes de la familia: ";
@@ -47,6 +48,7 @@ function crearInputsEdades($formulario,cantidadIntegrantes){
     for(let i = 0; i < cantidadIntegrantes; i++){
         
         const $div = document.createElement('div');
+        $div.className = "edad";
         
         const $label = document.createElement('label');
         $label.textContent = `Integrante nº: ${i+1} `;
@@ -72,7 +74,12 @@ $botonCalcular.onclick = function() {
     const mayorEdad = calcularMayorEdad(nodeListEdades);
     const menorEdad = calcularMenorEdad(nodeListEdades);
     const promedioEdades = calcularPromedioEdades(nodeListEdades);
-    mostrarResultados(mayorEdad,menorEdad,promedioEdades);
+    
+    mostrarResultados(mayorEdad,menorEdad,promedioEdades,$resultados);
+}
+
+$botonResetear.onclick = function(){
+    resetear($resultados);
 }
 
 function calcularMayorEdad (edades) {
@@ -112,11 +119,10 @@ function calcularPromedioEdades (edades) {
     return acumulador / edades.length;
 }
 
-function mostrarResultados(mayor,menor,prom){
+function mostrarResultados(mayor,menor,prom,$resultados){
     const $menorIntegrante = document.querySelector('#menor-integrante');
     const $mayorIntegrante = document.querySelector('#mayor-integrante');
     const $edadPromedio = document.querySelector('#edad-promedio');
-    const $resultados = document.querySelector('#resultados');
 
     $resultados.style.display = "";
 
@@ -125,6 +131,14 @@ function mostrarResultados(mayor,menor,prom){
     $edadPromedio.textContent = `El promedio de edades es: ${prom} años`;
 }
 
-function resetear () {
+function resetear ($resultados) {
+    const nodeListDivsEdades = document.querySelectorAll('.edad');
 
+    for(let i = 0; i < nodeListDivsEdades.length; i++){
+        nodeListDivsEdades[i].remove();
+    }
+
+    $resultados.remove();
+    document.querySelector('#cantidad-de-integrantes').value = "";
+     
 }
