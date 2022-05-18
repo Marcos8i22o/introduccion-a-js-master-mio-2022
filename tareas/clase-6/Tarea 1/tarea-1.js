@@ -9,12 +9,14 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 const $formulario = document.querySelector('form');
 const $botonCalcular = document.querySelector('#calcular');
 crearInputsCantidadIntegrantes($formulario);
+const $totalIntegrantes = document.querySelector('#total-integrantes');
+
+crearInputsCantidadIntegrantes($formulario,$totalIntegrantes);
 crearBotonAceptar($formulario);
 const $botonAceptar = document.querySelector('#boton-aceptar');
 
 
-function crearInputsCantidadIntegrantes($formulario){
-    const $totalIntegrantes = document.querySelector('#total-integrantes');
+function crearInputsCantidadIntegrantes($formulario,$totalIntegrantes){
 
     const $label = document.createElement('label');
     $label.textContent = "Ingrese la cantidad de integrantes de la familia: ";
@@ -114,8 +116,15 @@ function mostrarResultados(mayor,menor,prom){
     const $menorIntegrante = document.querySelector('#menor-integrante');
     const $mayorIntegrante = document.querySelector('#mayor-integrante');
     const $edadPromedio = document.querySelector('#edad-promedio');
+    const $resultados = document.querySelector('#resultados');
+
+    $resultados.style.display = "";
 
     $menorIntegrante.textContent = `El menor de la familia tiene: ${menor} años`;
     $mayorIntegrante.textContent = `El mayor de la familia tiene: ${mayor} años`;
     $edadPromedio.textContent = `El promedio de edades es: ${prom} años`;
+}
+
+function resetear () {
+
 }
