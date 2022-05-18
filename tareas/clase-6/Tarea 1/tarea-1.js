@@ -88,7 +88,7 @@ function calcularMayorEdad (edades) {
 function calcularMenorEdad (edades) {
     let menorEdad = Number(edades[0].value);
 
-    for(let i = 1; edades.length; i++){
+    for(let i = 1; i < edades.length; i++){
         let edadIntegrante = Number(edades[i].value);
         
         if(edadIntegrante < menorEdad){
@@ -100,5 +100,11 @@ function calcularMenorEdad (edades) {
 }
 
 function calcularPromedioEdades (edades) {
-    
+    let acumulador = 0;
+
+    for(let i = 0; i < edades.length; i++){
+        acumulador += Number(edades[i].value);
+    }
+
+    return acumulador / edades.length;
 }
