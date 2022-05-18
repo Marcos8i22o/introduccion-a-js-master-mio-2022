@@ -63,12 +63,13 @@ function crearInputsEdades($formulario,cantidadIntegrantes){
 $botonAceptar.onclick = function() {
     const cantidadIntegrantes = Number(document.querySelector('#cantidad-de-integrantes').value);
     crearInputsEdades($formulario,cantidadIntegrantes);
+}
 
-    // const nodeListEdades = document.querySelectorAll('.edades-integrantes');
-    // const mayorEdad = calcularMayorEdad(nodeListEdades);
-    // console.log(mayorEdad);
-    //const menorEdad = calcularMenorEdad(nodeListEdades);
-    //const promedioEdades = calcularPromedioEdades(nodeListEdades);
+$botonCalcular.onclick = function() {
+    const nodeListEdades = document.querySelectorAll('.edades-integrantes');
+    const mayorEdad = calcularMayorEdad(nodeListEdades);
+    const menorEdad = calcularMenorEdad(nodeListEdades);
+    const promedioEdades = calcularPromedioEdades(nodeListEdades);
 }
 
 function calcularMayorEdad (edades) {
@@ -82,4 +83,22 @@ function calcularMayorEdad (edades) {
     }
 
     return mayorEdad;
+}
+
+function calcularMenorEdad (edades) {
+    let menorEdad = Number(edades[0].value);
+
+    for(let i = 1; edades.length; i++){
+        let edadIntegrante = Number(edades[i].value);
+        
+        if(edadIntegrante < menorEdad){
+            menorEdad = edadIntegrante;
+        }
+    }
+
+    return menorEdad;
+}
+
+function calcularPromedioEdades (edades) {
+    
 }
