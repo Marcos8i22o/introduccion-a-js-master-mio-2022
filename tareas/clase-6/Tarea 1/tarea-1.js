@@ -64,4 +64,22 @@ $botonAceptar.onclick = function() {
     const cantidadIntegrantes = Number(document.querySelector('#cantidad-de-integrantes').value);
     crearInputsEdades($formulario,cantidadIntegrantes);
 
+    // const nodeListEdades = document.querySelectorAll('.edades-integrantes');
+    // const mayorEdad = calcularMayorEdad(nodeListEdades);
+    // console.log(mayorEdad);
+    //const menorEdad = calcularMenorEdad(nodeListEdades);
+    //const promedioEdades = calcularPromedioEdades(nodeListEdades);
+}
+
+function calcularMayorEdad (edades) {
+    let mayorEdad = 0;
+    for(let i = 0; i < edades.length; i++){
+        let edadIntegrante = Number(edades[i].value);
+        
+        if(edadIntegrante > mayorEdad){
+            mayorEdad = edadIntegrante;
+        }
+    }
+
+    return mayorEdad;
 }
