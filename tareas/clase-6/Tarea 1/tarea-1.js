@@ -7,6 +7,7 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 */
 
 const $formulario = document.querySelector('form');
+const $botonCalcular = document.querySelector('#calcular');
 crearInputsCantidadIntegrantes($formulario);
 
 function crearInputsCantidadIntegrantes($formulario){
@@ -21,6 +22,8 @@ function crearInputsCantidadIntegrantes($formulario){
     $formulario.appendChild($cantidadIntegrantes);
 }
 
+$botonCalcular.onclick = function() {
+    const cantidadIntegrantes = Number(document.querySelector('#cantidad-de-integrantes').value);
     
 }
 
