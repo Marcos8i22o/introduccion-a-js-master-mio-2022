@@ -9,8 +9,13 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 const $formulario = document.querySelector('form');
 const $botonCalcular = document.querySelector('#calcular');
 crearInputsCantidadIntegrantes($formulario);
+crearBotonAceptar($formulario);
+const $botonAceptar = document.querySelector('#boton-aceptar');
+
 
 function crearInputsCantidadIntegrantes($formulario){
+    const $totalIntegrantes = document.querySelector('#total-integrantes');
+
     const $label = document.createElement('label');
     $label.textContent = "Ingrese la cantidad de integrantes de la familia: ";
     
@@ -18,12 +23,45 @@ function crearInputsCantidadIntegrantes($formulario){
     $cantidadIntegrantes.type = "number";
     $cantidadIntegrantes.id = "cantidad-de-integrantes";
 
-    $formulario.appendChild($label);
-    $formulario.appendChild($cantidadIntegrantes);
+    $totalIntegrantes.appendChild($label);
+    $totalIntegrantes.appendChild($cantidadIntegrantes);
+
+    $formulario.appendChild($totalIntegrantes);
 }
 
-$botonCalcular.onclick = function() {
-    const cantidadIntegrantes = Number(document.querySelector('#cantidad-de-integrantes').value);
+function crearBotonAceptar($form){
+    const $totalIntegrantes = document.querySelector('#total-integrantes');
     
+    const $boton = document.createElement('button');
+    $boton.type = "button";
+    $boton.id = "boton-aceptar";
+    $boton.textContent = "Aceptar";
+
+    $totalIntegrantes.appendChild($boton);
+    $form.appendChild($totalIntegrantes);
 }
 
+function crearInputsEdades($formulario,cantidadIntegrantes){
+    for(let i = 0; i < cantidadIntegrantes; i++){
+        
+        const $div = document.createElement('div');
+        
+        const $label = document.createElement('label');
+        $label.textContent = `Integrante nº: ${i+1} `;
+
+        const $inputEdad = document.createElement('input');
+        $inputEdad.type = "number";
+        $inputEdad.className = "edades-integrantes";
+
+        $div.appendChild($label);
+        $div.appendChild($inputEdad);
+
+        $formulario.appendChild($div);
+    }
+}
+
+$botonAceptar.onclick = function() {
+    const cantidadIntegrantes = Number(document.querySelector('#cantidad-de-integrantes').value);
+    crearInputsEdades($formulario,cantidadIntegrantes);
+
+}
