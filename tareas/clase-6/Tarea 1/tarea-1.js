@@ -70,6 +70,7 @@ $botonCalcular.onclick = function() {
     const mayorEdad = calcularMayorEdad(nodeListEdades);
     const menorEdad = calcularMenorEdad(nodeListEdades);
     const promedioEdades = calcularPromedioEdades(nodeListEdades);
+    mostrarResultados(mayorEdad,menorEdad,promedioEdades);
 }
 
 function calcularMayorEdad (edades) {
@@ -107,4 +108,14 @@ function calcularPromedioEdades (edades) {
     }
 
     return acumulador / edades.length;
+}
+
+function mostrarResultados(mayor,menor,prom){
+    const $menorIntegrante = document.querySelector('#menor-integrante');
+    const $mayorIntegrante = document.querySelector('#mayor-integrante');
+    const $edadPromedio = document.querySelector('#edad-promedio');
+
+    $menorIntegrante.textContent = `El menor de la familia tiene: ${menor} años`;
+    $mayorIntegrante.textContent = `El mayor de la familia tiene: ${mayor} años`;
+    $edadPromedio.textContent = `El promedio de edades es: ${prom} años`;
 }
