@@ -30,7 +30,7 @@ $botonCalcular.onclick = function(){
     const menorSalarioAnual = calcularMenorSalario(nodeListSalarios);
     const salarioAnualPromedio = calcularSalarioAnualPromedio(nodeListSalarios);
     const salarioMensualPromedio = calcularSalarioMensualPromedio(nodeListSalarios);
-    //mostrarResultados
+    mostrarResultados(mayorSalarioAnual,menorSalarioAnual,salarioAnualPromedio,salarioMensualPromedio);
 }
 
 function agregarIntegrante(){
@@ -53,10 +53,10 @@ function agregarIntegrante(){
 function calcularMayorSalario(salarios){
     let maximo = Number(salarios[0].value);
 
-    for(let i = 0; i < salarios.length; i++){
+    for(let i = 1; i < salarios.length; i++){
         let salario = Number(salarios[i].value);
         
-        if(salario > maximo){
+        if(salario > maximo && salario !== ""){
             maximo = salario;
         }
     }
@@ -67,10 +67,10 @@ function calcularMayorSalario(salarios){
 function calcularMenorSalario(salarios){
     let minimo = Number(salarios[0].value);
 
-    for(let i = 0; i < salarios.length; i++){
+    for(let i = 1; i < salarios.length; i++){
         let salario = Number(salarios[i].value);
         
-        if(salario < minimo){
+        if(salario < minimo && salario !== ""){
             minimo = salario;
         }
     }
@@ -82,7 +82,10 @@ function calcularSalarioAnualPromedio(salarios){
     let acumulador = 0;
 
     for(let i = 0; i < salarios.length; i++){
-        acumulador += Number(salarios[i].value);
+        let salario = Number(salarios[i].value);
+        if (salario !== ""){
+            acumulador += salario;
+        }
     }
 
     return acumulador / salarios.length;
@@ -93,9 +96,24 @@ function calcularSalarioMensualPromedio(salarios){
     let acumulador = 0;
 
     for(let i = 0; i < salarios.length; i++){
-        let salarioMensual = Number(salarios[i].value) / MESES_EN_EL_ANIO;
-        acumulador += salarioMensual;
+        let salarioMensual = Number(salarios[i].value) 
+        if (salarioMensual !== ""){
+            salarioMensual / MESES_EN_EL_ANIO;
+            acumulador += salarioMensual;
+        }
     }
 
     return acumulador / salarios.length;
+}
+
+function mostrarResultados(mayorAnual,menorAnual,anualPromedio,mensualPromedio){
+    const $mayorSalarioAnual = document.querySelector('#mayor-salario-anual');
+    const $menorSalarioAnual = document.querySelector('#menor-salario-anual');
+    const $salarioAnualPromedio = document.querySelector('#salario-anual-promedio');
+    const $salarioMensualPromedio = document.querySelector('#salario-mensual-promedio');
+
+    $mayorSalarioAnual.textContent = `El mayor salario anual es de: ${mayorAnual}`;
+    $menorSalarioAnual.textContent = `El menor salario anual es de: ${menorAnual}`;
+    $salarioAnualPromedio.textContent = `El salario anual promedio es de: ${anualPromedio}`;
+    $salarioMensualPromedio.textContent = `El salario mensual promedio es de: ${mensualPromedio}`;
 }
