@@ -16,10 +16,16 @@ $botonAgregarIntegrante.onclick = function(){
     agregarIntegrante();
 }
 
-/*$botonQuitarIntegrante.onclick = function(){
+$botonQuitarIntegrante.onclick = function(){
+    const $input = document.querySelector('.sueldos-anuales')
+    const $label = document.querySelector('label');
+    const $hr = document.querySelector('hr');
 
+    $input.remove();
+    $label.remove();
+    $hr.remove();
 }
-*/
+
 
 
 
