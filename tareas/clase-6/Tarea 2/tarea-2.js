@@ -9,9 +9,27 @@ Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como
 */
 
 const $botonAgregarIntegrante = document.querySelector('#boton-agregar-integrante');
+const $botonQuitarIntegrante = document.querySelector('#boton-quitar-integrante')
+const $botonCalcular = document.querySelector('#boton-calcular');
 
 $botonAgregarIntegrante.onclick = function(){
     agregarIntegrante();
+}
+
+/*$botonQuitarIntegrante.onclick = function(){
+
+}
+*/
+
+
+
+$botonCalcular.onclick = function(){
+    const nodeListSalarios = document.querySelectorAll('.sueldos-anuales');
+    const mayorSalarioAnual = calcularMayorSalario(nodeListSalarios);
+    //const menorSalarioAnual = calcularMenorSalario();
+    //const salarioAnualPromedio = calcularSalarioAnualPromedio();
+    //const salarioMensualPromedio = calcularSalarioMensualPromedio();
+    //mostrarResultados
 }
 
 function agregarIntegrante(){
@@ -29,4 +47,18 @@ function agregarIntegrante(){
     $divIntegrantes.appendChild($labelIntegrante);
     $divIntegrantes.appendChild($inputIntegrante);
     $divIntegrantes.appendChild($hr);
+}
+
+function calcularMayorSalario(salarios){
+    let maximo = Number(salarios[0].value);
+
+    for(let i = 0; i < salarios.length; i++){
+        let salario = Number(salarios[i].value);
+        
+        if(salario > maximo){
+            maximo = salario;
+        }
+    }
+
+    return maximo;
 }
