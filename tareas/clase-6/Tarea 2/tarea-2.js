@@ -29,8 +29,7 @@ $botonCalcular.onclick = function(){
     const mayorSalarioAnual = calcularMayorSalario(nodeListSalarios);
     const menorSalarioAnual = calcularMenorSalario(nodeListSalarios);
     const salarioAnualPromedio = calcularSalarioAnualPromedio(nodeListSalarios);
-
-    //const salarioMensualPromedio = calcularSalarioMensualPromedio();
+    const salarioMensualPromedio = calcularSalarioMensualPromedio(nodeListSalarios);
     //mostrarResultados
 }
 
@@ -84,6 +83,18 @@ function calcularSalarioAnualPromedio(salarios){
 
     for(let i = 0; i < salarios.length; i++){
         acumulador += Number(salarios[i].value);
+    }
+
+    return acumulador / salarios.length;
+}
+
+function calcularSalarioMensualPromedio(salarios){
+    const MESES_EN_EL_ANIO = 12;
+    let acumulador = 0;
+
+    for(let i = 0; i < salarios.length; i++){
+        let salarioMensual = Number(salarios[i].value) / MESES_EN_EL_ANIO;
+        acumulador += salarioMensual;
     }
 
     return acumulador / salarios.length;
