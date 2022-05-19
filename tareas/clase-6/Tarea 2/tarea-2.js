@@ -25,9 +25,11 @@ $botonAgregarIntegrante.onclick = function(){
 
 $botonCalcular.onclick = function(){
     const nodeListSalarios = document.querySelectorAll('.sueldos-anuales');
+    
     const mayorSalarioAnual = calcularMayorSalario(nodeListSalarios);
-    //const menorSalarioAnual = calcularMenorSalario();
-    //const salarioAnualPromedio = calcularSalarioAnualPromedio();
+    const menorSalarioAnual = calcularMenorSalario(nodeListSalarios);
+    const salarioAnualPromedio = calcularSalarioAnualPromedio(nodeListSalarios);
+
     //const salarioMensualPromedio = calcularSalarioMensualPromedio();
     //mostrarResultados
 }
@@ -61,4 +63,28 @@ function calcularMayorSalario(salarios){
     }
 
     return maximo;
+}
+
+function calcularMenorSalario(salarios){
+    let minimo = Number(salarios[0].value);
+
+    for(let i = 0; i < salarios.length; i++){
+        let salario = Number(salarios[i].value);
+        
+        if(salario < minimo){
+            minimo = salario;
+        }
+    }
+
+    return minimo;
+}
+
+function calcularSalarioAnualPromedio(salarios){
+    let acumulador = 0;
+
+    for(let i = 0; i < salarios.length; i++){
+        acumulador += Number(salarios[i].value);
+    }
+
+    return acumulador / salarios.length;
 }
